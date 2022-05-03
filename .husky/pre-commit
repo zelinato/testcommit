@@ -1,0 +1,10 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+hooks=`git config --global core.hooksPath`
+
+if [ "$hooks" ]; then
+    "$hooks/pre-commit"  # Can convert to ALIAS
+fi
+
+npx lint-staged # This your package.json lint-staged
